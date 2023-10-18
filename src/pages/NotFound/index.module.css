@@ -1,0 +1,9 @@
+.notFound {
+  font-size: 404px;
+  font-weight: 700;
+  color: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+}

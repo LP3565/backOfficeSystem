@@ -1,0 +1,25 @@
+.demo-logo-vertical {
+  width: 50%;
+  height: 50px;
+  margin: 5px auto;
+  padding: 10px;
+  border-radius: 15px;
+  background: url('../../assets/images/logo.gif') center no-repeat;
+  background-size: cover;  
+}
+
+.ant-layout {
+  background-color: #fff;
+}
+
+ .ant-layout-content {
+  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.06);
+}
+.ant-layout-sider, .ant-layout-header {
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-box {
+  float: right;
+  margin-right: 100px;
+}
