@@ -13,7 +13,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
 // 数据返回的基本数据类型
-interface Data<T> {
+export interface Data<T> {
   data: T
   meta: {
     msg: string

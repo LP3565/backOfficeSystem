@@ -12,11 +12,29 @@
   background-color: #fff;
 }
 
- .ant-layout-content {
-  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.06);
-}
 .ant-layout-sider, .ant-layout-header {
   box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+}
+.ant-layout-sider {
+  z-index: 20;
+}
+.ant-layout-header {
+  z-index: 10;
+}
+
+.ant-layout-content {
+  overflow: auto;
+  scrollbar-color: rgba(144, 147, 153, 0.3) transparent; /* 滑块颜色  滚动条背景颜色 */
+  scrollbar-width: thin; /* 滚动条宽度有三种：thin、auto、none */
+  margin: 0 !important;
+}
+
+.ant-layout-content::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+}
+.ant-layout-content::-webkit-scrollbar-button {
+  display: none;
 }
 
 .user-box {
