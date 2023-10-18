@@ -1,11 +1,11 @@
 import React from 'react'
 import { GloBalTitleType } from '../../types/global'
 
-const ControlPanel: React.FC<GloBalTitleType> = ({ title }) => {
+const OrderList: React.FC<GloBalTitleType> = ({ title }) => {
   document.title = title
   return (<>
-    面板
+    订单列表
   </>)
 }
 
-export default ControlPanel
+export default OrderList

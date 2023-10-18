@@ -10,9 +10,10 @@ import { useToken } from '../../hooks/token';
 import { useNavigate } from 'react-router-dom';
 import { loginAPI } from '../../services/user'
 import { getUserInfo } from '../../store/reducers/user';
+import { GloBalTitleType } from '../../types/global';
 
-const Login: React.FC<{ title?: string }> = ({ title }) => {
-  document.title = title!
+const Login: React.FC<GloBalTitleType> = ({ title }) => {
+  document.title = title
 
   // 派发事件的方法
   const dispatch = useAppDispatch()
@@ -26,7 +27,7 @@ const Login: React.FC<{ title?: string }> = ({ title }) => {
       // 登录
       const res = await loginAPI(values)
       // 登录失败提示
-      if (res.meta.status !== 200) return messageApi.error('登录失败！')
+      if (res.meta.status !== 200) return messageApi.error('账号或密码错误！')
       // 登录成功
       setAuth({ token: res.data.token })
       setToken(res.data.token)

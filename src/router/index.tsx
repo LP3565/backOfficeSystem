@@ -1,5 +1,12 @@
 import { lazy } from 'react'
 import ControlPanel from '../pages/ControlPanel'
+import UserControl from '../pages/UserControl'
+import UserList from '../pages/UserList'
+import AuthList from '../pages/AuthList'
+import GoodsList from '../pages/GoodsList'
+import SortingParameter from '../pages/SortingParameter'
+import ClassifyGoods from '../pages/ClassifyGoods'
+import OrderList from '../pages/OrderList'
 
 type Routes = {
   path: string;
@@ -30,6 +37,54 @@ export const routes: Routes[] = [
         key: 'controlpanel',
         title: '控制模板',
         element: ControlPanel,
+      },
+      {
+        path: '/home/users',
+        key: 'users',
+        title: '用户列表',
+        element: UserControl,
+      },
+      {
+        path: '/home/roles',
+        key: 'roles',
+        title: '角色列表',
+        element: UserList,
+      },
+      {
+        path: '/home/rights',
+        key: 'rights',
+        title: '权限列表',
+        element: AuthList,
+      },
+      {
+        path: '/home/rights',
+        key: 'rights',
+        title: '权限列表',
+        element: AuthList,
+      },
+      {
+        path: '/home/goods',
+        key: 'goods',
+        title: '商品列表',
+        element: GoodsList
+      },
+      {
+        path: '/home/params',
+        key: 'params',
+        title: '分类参数',
+        element: SortingParameter,
+      },
+      {
+        path: '/home/categories',
+        key: 'categories',
+        title: '商品分类',
+        element: ClassifyGoods,
+      },
+      {
+        path: '/home/orders',
+        key: 'orders',
+        title: '订单列表',
+        element: OrderList
       }
     ]
   },
