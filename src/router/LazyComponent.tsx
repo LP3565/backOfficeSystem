@@ -1,8 +1,9 @@
 import { Suspense } from 'react'
+import { Spin } from 'antd'
 import type { ReactNode } from 'react'
 
 const LazyComponent = (element: ReactNode) => {
-  return (<Suspense fallback={'加载中..'}>
+  return (<Suspense fallback={<Spin />}>
     {element}
   </Suspense>)
 }

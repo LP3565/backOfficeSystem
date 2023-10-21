@@ -1,0 +1,15 @@
+.anticon-home {
+  padding: 4px;
+  transition: all .3s;
+}
+.anticon-home:hover {
+  border-radius: 5px;
+  background-color: #ebe0e0;
+}
+
+.anticon-home > svg > path {
+  transition: .3s;
+}
+.anticon-home:hover > svg > path {
+  fill: #131313;
+}

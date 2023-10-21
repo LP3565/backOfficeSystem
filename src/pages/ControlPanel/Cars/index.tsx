@@ -4,6 +4,7 @@ import { message } from 'antd'
 import { FundTwoTone, ShoppingTwoTone, AccountBookTwoTone, CloseSquareTwoTone } from '@ant-design/icons'
 import { getControlAPI } from '../../../services/control'
 import type { DataType } from '../../../types/control'
+import Counter from '../Counter'
 
 type IconType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,11 +44,11 @@ const Cars: React.FC = () => {
                   <div className={styles.dataDetail}>
                     <div className={styles.dataCount}>
                       <span>{item.icon}</span>&nbsp;
-                      <span className='count'>{item.count}</span>
+                      <span className='count'><Counter counts={item.count} /></span>
                     </div>
                     <span className={styles.dataRise}>
                       <i>+</i>
-                      <i className={styles.rise}>{item.rise}</i>
+                      <i className={styles.rise}><Counter counts={item.rise} /></i>
                       %
                     </span>
                   </div>

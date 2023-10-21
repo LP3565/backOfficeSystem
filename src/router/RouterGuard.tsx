@@ -4,10 +4,13 @@ import { useAuth } from '../hooks/useAuth'
 export const RouterGuard = ({ allowedRoles }: { allowedRoles?: number[] }) => {
   const { auth } = useAuth()
   const location = useLocation()
+  const newRoles = sessionStorage.length === 0 ? [] : auth.roles
+  const newToken = sessionStorage.length === 0 ? '' : auth?.token
+
 
   return (
-    auth?.roles?.find(role => allowedRoles?.includes(role)) ? <Outlet />
-      : auth.token
+    newRoles?.find(role => allowedRoles?.includes(role)) ? <Outlet />
+      : newToken
         ? <Outlet />
         : <Navigate to="/login" state={{ from: location.pathname }} replace />
   )

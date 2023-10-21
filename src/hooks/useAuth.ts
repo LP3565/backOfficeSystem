@@ -3,7 +3,7 @@ import { AuthContext, AuthStateType } from '../context/AuthProvider'
 
 interface AuthProviderType {
   auth: AuthStateType
-  setAuth(state: AuthStateType): void
+  setAuth(data: AuthStateType): void
 }
 
 // 获取权限信息

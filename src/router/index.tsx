@@ -20,7 +20,7 @@ type Routes = {
 
 export const routes: Routes[] = [
   {
-    path: 'login',
+    path: 'login/*',
     key: 'login',
     title: '登录',
     element: lazy(() => import('../pages/Login')),

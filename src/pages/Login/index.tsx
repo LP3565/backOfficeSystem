@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginAPI } from '../../services/user'
 import { getUserInfo } from '../../store/reducers/user';
 import { GloBalTitleType } from '../../types/global';
+import { Route, Navigate, Routes } from 'react-router-dom'
 
 const Login: React.FC<GloBalTitleType> = ({ title }) => {
   document.title = title
@@ -19,7 +20,7 @@ const Login: React.FC<GloBalTitleType> = ({ title }) => {
   const dispatch = useAppDispatch()
   const naviagte = useNavigate()
   const { setAuth } = useAuth()
-  const { setToken } = useToken()
+  const { setToken, token } = useToken()
   const [messageApi, contextHolder] = message.useMessage()
 
   const onFinish = async (values: LoginData): Promise<void | boolean> => {
@@ -53,44 +54,50 @@ const Login: React.FC<GloBalTitleType> = ({ title }) => {
   return (
     <>
       {contextHolder}
-      <div className={styles.loginContainer}>
-        <div className={styles.loginBox}>
-          <div className={styles.loginBg}></div>
-          <div className={styles.loginFormContainer}>
-            <div className={styles.loginFormBox}>
-              <Form
-                name="normal_login"
-                className={styles.loginForm}
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-              >
-                <Form.Item
-                  name="username"
-                  rules={usernameRule}
-                >
-                  <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="用户名" />
-                </Form.Item>
-                <Form.Item
-                  name="password"
-                  rules={passwordRule}
-                >
-                  <Input
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    type="password"
-                    placeholder="密码"
-                  />
-                </Form.Item>
+      {
+        token
+          ? <Routes><Route path='/' element={<Navigate to="/home" />} /></Routes>
+          : (
 
-                <Form.Item>
-                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: 100 + '%' }}>
-                    登录
-                  </Button>
-                </Form.Item>
-              </Form>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div className={styles.loginContainer}>
+              <div className={styles.loginBox}>
+                <div className={styles.loginBg}></div>
+                <div className={styles.loginFormContainer}>
+                  <div className={styles.loginFormBox}>
+                    <Form
+                      name="normal_login"
+                      className={styles.loginForm}
+                      initialValues={{ remember: true }}
+                      onFinish={onFinish}
+                    >
+                      <Form.Item
+                        name="username"
+                        rules={usernameRule}
+                      >
+                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="用户名" />
+                      </Form.Item>
+                      <Form.Item
+                        name="password"
+                        rules={passwordRule}
+                      >
+                        <Input
+                          prefix={<LockOutlined className="site-form-item-icon" />}
+                          type="password"
+                          placeholder="密码"
+                        />
+                      </Form.Item>
+
+                      <Form.Item>
+                        <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: 100 + '%' }}>
+                          登录
+                        </Button>
+                      </Form.Item>
+                    </Form>
+                  </div>
+                </div>
+              </div>
+            </div>)
+      }
     </>
   )
 }

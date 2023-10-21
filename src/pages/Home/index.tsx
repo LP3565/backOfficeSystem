@@ -15,8 +15,8 @@ import type { MenuProps } from 'antd'
 // 路由
 import { Outlet, useNavigate } from 'react-router-dom';
 // 仓库
-import { selectUser } from '../../store/reducers/user'
-import { useAppSelector } from '../../hooks/appStore';
+import { selectUser, setMenuActive, clearState } from '../../store/reducers/user'
+import { useAppSelector, useAppDispatch } from '../../hooks/appStore';
 // 服务
 import { getMenusAPI } from '../../services/home'
 import type { MenuType } from '../../types/menu'
@@ -85,15 +85,20 @@ function formattingMenu(data: MenuType[]): MenuItem[] {
 const Home: React.FC = () => {
 
   const navigate = useNavigate()
-  const { userInfo } = useAppSelector(selectUser)
+  const dispatch = useAppDispatch()
+  const { userInfo, defaultOpenKeys, defaultSelectedKeys } = useAppSelector(selectUser)
   // 控制侧边栏
   const [collapsed, setCollapsed] = useState(false)
   // 全局信息 api
   const [messageApi, contextHolder] = message.useMessage()
   // 侧边栏数据
   const [menuList, setMenuList] = useState<MenuItem[]>()
-  const [defaultSelectedKeys, setDefaultSelectedKeys] = useState<string>(sessionStorage.getItem('SELECTMENUKEY') || 'controlpanel')
-  const [defaultOpenKeys, setDefaultOpenKeys] = useState<string>(sessionStorage.getItem('OPENKEY') || 'controlpanel')
+
+  const onQuit = () => {
+    sessionStorage.clear()
+    dispatch(clearState())
+    navigate('/login', { replace: true })
+  }
 
   // 用户信息
   const items: MenuProps['items'] = [
@@ -108,6 +113,10 @@ const Home: React.FC = () => {
     {
       key: '3',
       label: (<section>邮&nbsp;箱：{userInfo.email}</section>)
+    },
+    {
+      key: '4',
+      label: (<section onClick={onQuit}>退出</section>)
     }
   ]
 
@@ -131,10 +140,12 @@ const Home: React.FC = () => {
   // 点击侧边栏
   const onMenuItemClick: MenuProps['onClick'] = (e) => {
     navigate(`/home/${e.key}`)
-    setDefaultSelectedKeys(e.key)
-    setDefaultOpenKeys(e.keyPath[1])
-    sessionStorage.setItem('OPENKEY', e.keyPath[1])
-    sessionStorage.setItem('SELECTMENUKEY', e.key)
+    dispatch(setMenuActive({ selectKey: e.key, openKey: e.keyPath[1] }))
+  }
+
+  // 侧边栏展开 
+  const onOpenChange: MenuProps['onOpenChange'] = (e) => {
+    dispatch(dispatch(setMenuActive({ openKey: e[1], selectKey: defaultSelectedKeys })))
   }
 
   return (
@@ -149,6 +160,9 @@ const Home: React.FC = () => {
             onClick={onMenuItemClick}
             defaultOpenKeys={[defaultOpenKeys]}
             defaultSelectedKeys={[defaultSelectedKeys]}
+            openKeys={[defaultOpenKeys]}
+            selectedKeys={[defaultSelectedKeys]}
+            onOpenChange={onOpenChange}
             items={menuList}
           />
         </Sider>

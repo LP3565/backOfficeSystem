@@ -1,0 +1,15 @@
+.ant-popover-inner-content {
+  width: 150px;
+}
+
+.ant-row {
+  justify-content: space-between;
+}
+
+.roles-item {
+  margin-top: 20px;
+}
+
+.left {
+  margin-right: 20px;
+}

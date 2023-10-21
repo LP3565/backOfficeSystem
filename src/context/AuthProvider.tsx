@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
 import type { ReactNode } from 'react'
 import { useToken } from '../hooks/token'
 
@@ -13,13 +13,6 @@ export const AuthContext = createContext({})
 // 创建传值组件
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { token } = useToken()
-
-  // 更新token
-  useEffect(() => {
-    if (token !== 'undefined') {
-      setAuth({ token: token as string })
-    }
-  }, [token])
 
   // 传出权限信息
   const [auth, setAuth] = useState<AuthStateType>({
