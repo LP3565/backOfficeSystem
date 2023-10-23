@@ -22,3 +22,21 @@ export interface GoodsListType {
   cat_three_id?: any
   [key: string]: any
 }
+
+/** 商品分类结果类型 */
+export interface ClassifyGoodsType {
+  pagenum: number
+  total: number
+  pagesize: number
+  result: ClassifyGoodsResultType[]
+}
+
+export interface ClassifyGoodsResultType {
+  cat_deleted: boolean
+  cat_id: number
+  cat_level: number
+  cat_name: string
+  cat_pid: number
+  children: ClassifyGoodsResultType[]
+  [key: string]: any
+}
