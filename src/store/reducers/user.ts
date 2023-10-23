@@ -46,8 +46,8 @@ const userSlice = createSlice({
     // 清除数据
     clearState(state) {
       state.userInfo = {} as UserInfo
-      state.defaultOpenKeys = ''
-      state.defaultSelectedKeys = ''
+      state.defaultOpenKeys = 'controlpanel'
+      state.defaultSelectedKeys = 'controlpanel'
     },
   },
 })

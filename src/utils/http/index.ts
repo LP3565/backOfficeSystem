@@ -68,8 +68,10 @@ class HttpClient {
   request<T>(
     method: Method,
     url: string,
-    params?: AxiosRequestConfig,
-    options?: InternalAxiosRequestConfig
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    params?: AxiosRequestConfig & { [key: string]: any },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    options?: InternalAxiosRequestConfig & { [key: string]: any }
   ): Promise<Data<T>> {
     const config = { method, url, ...params, ...options }
     return new Promise((resolve, reject) => {

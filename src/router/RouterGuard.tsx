@@ -12,6 +12,6 @@ export const RouterGuard = ({ allowedRoles }: { allowedRoles?: number[] }) => {
     newRoles?.find(role => allowedRoles?.includes(role)) ? <Outlet />
       : newToken
         ? <Outlet />
-        : <Navigate to="/login" state={{ from: location.pathname }} replace />
+        : <Navigate to="/" state={{ from: location.pathname }} replace />
   )
 }

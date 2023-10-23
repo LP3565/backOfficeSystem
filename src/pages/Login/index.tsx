@@ -13,7 +13,11 @@ import { getUserInfo } from '../../store/reducers/user';
 import { GloBalTitleType } from '../../types/global';
 import { Route, Navigate, Routes } from 'react-router-dom'
 
-const Login: React.FC<GloBalTitleType> = ({ title }) => {
+interface Props {
+  fromPath?: string
+}
+
+const Login: React.FC<GloBalTitleType & Props> = ({ title, fromPath }) => {
   document.title = title
 
   // 派发事件的方法
@@ -56,7 +60,7 @@ const Login: React.FC<GloBalTitleType> = ({ title }) => {
       {contextHolder}
       {
         token
-          ? <Routes><Route path='/' element={<Navigate to="/home" />} /></Routes>
+          ? <Routes><Route path='/' element={<Navigate to={`${fromPath}`} />} /></Routes>
           : (
 
             <div className={styles.loginContainer}>

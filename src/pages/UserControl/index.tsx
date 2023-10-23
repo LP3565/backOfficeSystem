@@ -37,7 +37,6 @@ type RolesData = {
 // 用户列表页面
 const UserControl: React.FC<GloBalTitleType> = ({ title }) => {
   document.title = title
-
   const [messageApi, contextHolder] = message.useMessage()
   // 用户列表数据
   const [userList, setUserList] = useState({} as UserListType)
@@ -188,6 +187,7 @@ const UserControl: React.FC<GloBalTitleType> = ({ title }) => {
     }
   }
 
+  // 模态框的功能类型
   enum ModalType {
     /**添加用户 */
     ADD = 'ADD',
@@ -329,7 +329,7 @@ const UserControl: React.FC<GloBalTitleType> = ({ title }) => {
         }
         <Card hoverable style={{ marginTop: '20px' }}>
           <div className="find-add" style={{ width: '100%' }}>
-            <Search placeholder="input search text" allowClear={true} onSearch={onSearch} style={{ width: 200 }} />
+            <Search placeholder="input search text" allowClear={true} onSearch={onSearch} style={{ width: '200px' }} />
             <Button type="primary" icon={<UserAddOutlined />} style={{ float: 'right' }} onClick={() => isModalOpen(ModalType.ADD)}>添加</Button>
           </div>
           <div className="user-list" style={{ width: '100%', marginTop: '20px' }}>

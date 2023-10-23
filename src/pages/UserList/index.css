@@ -1,0 +1,8 @@
+.stair {
+  display: flex;
+  align-items: center;
+}
+
+.ant-row {
+  justify-content: space-between;
+}

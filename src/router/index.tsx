@@ -1,12 +1,6 @@
 import { lazy } from 'react'
+import Login from '../pages/Login'
 import ControlPanel from '../pages/ControlPanel'
-import UserControl from '../pages/UserControl'
-import UserList from '../pages/UserList'
-import AuthList from '../pages/AuthList'
-import GoodsList from '../pages/GoodsList'
-import SortingParameter from '../pages/SortingParameter'
-import ClassifyGoods from '../pages/ClassifyGoods'
-import OrderList from '../pages/OrderList'
 
 type Routes = {
   path: string;
@@ -15,15 +9,16 @@ type Routes = {
   element: any;
   guard?: boolean;
   title?: string;
-  children?: Routes[]
+  isLazy?: boolean;
+  children?: Routes[];
 }
 
 export const routes: Routes[] = [
   {
-    path: 'login/*',
+    path: '/*',
     key: 'login',
     title: '登录',
-    element: lazy(() => import('../pages/Login')),
+    element: Login,
     guard: false
   },
   {
@@ -37,54 +32,56 @@ export const routes: Routes[] = [
         key: 'controlpanel',
         title: '控制模板',
         element: ControlPanel,
+        isLazy: false
       },
       {
         path: '/home/users',
         key: 'users',
         title: '用户列表',
-        element: UserControl,
+        element: lazy(() => import('../pages/UserControl')),
+        isLazy: true
       },
       {
         path: '/home/roles',
         key: 'roles',
         title: '角色列表',
-        element: UserList,
+        element: lazy(() => import('../pages/UserList')),
+        isLazy: true
       },
       {
         path: '/home/rights',
         key: 'rights',
         title: '权限列表',
-        element: AuthList,
-      },
-      {
-        path: '/home/rights',
-        key: 'rights',
-        title: '权限列表',
-        element: AuthList,
+        element: lazy(() => import('../pages/AuthList')),
+        isLazy: true
       },
       {
         path: '/home/goods',
         key: 'goods',
         title: '商品列表',
-        element: GoodsList
+        element: lazy(() => import('../pages/GoodsList')),
+        isLazy: true
       },
       {
         path: '/home/params',
         key: 'params',
         title: '分类参数',
-        element: SortingParameter,
+        element: lazy(() => import('../pages/SortingParameter')),
+        isLazy: true
       },
       {
         path: '/home/categories',
         key: 'categories',
         title: '商品分类',
-        element: ClassifyGoods,
+        element: lazy(() => import('../pages/ClassifyGoods')),
+        isLazy: true
       },
       {
         path: '/home/orders',
         key: 'orders',
         title: '订单列表',
-        element: OrderList
+        element: lazy(() => import('../pages/OrderList')),
+        isLazy: true
       }
     ]
   },

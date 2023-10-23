@@ -83,7 +83,6 @@ function formattingMenu(data: MenuType[]): MenuItem[] {
 
 
 const Home: React.FC = () => {
-
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { userInfo, defaultOpenKeys, defaultSelectedKeys } = useAppSelector(selectUser)
@@ -97,7 +96,7 @@ const Home: React.FC = () => {
   const onQuit = () => {
     sessionStorage.clear()
     dispatch(clearState())
-    navigate('/login', { replace: true })
+    navigate('/', { replace: true })
   }
 
   // 用户信息

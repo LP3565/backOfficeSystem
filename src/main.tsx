@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { store } from './store'
 
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 import App from './App.tsx'
 import { AuthProvider } from './context/AuthProvider'
@@ -15,9 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <HashRouter>
       <Provider store={store}>
         <AuthProvider>
-          <Routes>
-            <Route path='/*' element={<App />} />
-          </Routes>
+          <App />
         </AuthProvider>
       </Provider>
     </HashRouter>
