@@ -61,7 +61,6 @@ const AuthList: React.FC<GloBalTitleType> = ({ title }) => {
 
   useEffect(() => {
     getAllRolesList()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // 获取所有权限列表

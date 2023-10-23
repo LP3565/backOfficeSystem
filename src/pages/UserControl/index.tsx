@@ -169,7 +169,6 @@ const UserControl: React.FC<GloBalTitleType> = ({ title }) => {
   // 页面初始化获取数据
   useEffect(() => {
     getUserList()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
 
   // 获取用户列表

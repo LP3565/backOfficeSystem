@@ -125,7 +125,6 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     getMenuList()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // 获取侧边栏
