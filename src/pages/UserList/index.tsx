@@ -69,6 +69,9 @@ const UserList: React.FC<GloBalTitleType> = ({ title }) => {
       title: '角色名称',
       dataIndex: 'roleName',
       key: 'roleName',
+      render(text) {
+        return <span style={{ color: '#1677ff' }}>{text}</span>
+      }
     },
     {
       title: '角色描述',

@@ -1,9 +1,7 @@
+import type { GlobalListQuery } from './global'
+
 /** 获取用户列表的参数类型 */
-export interface UserQuery {
-  query?: string
-  pagenum: number
-  pagesize: number
-}
+export type UserQuery = GlobalListQuery
 
 /** 用户列表类型 */
 export interface UserListType {

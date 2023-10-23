@@ -34,6 +34,9 @@ const AuthList: React.FC<GloBalTitleType> = ({ title }) => {
       title: '权限',
       dataIndex: 'authName',
       key: 'authName',
+      render(text) {
+        return <span style={{ color: '#1677ff' }}>{text}</span>
+      }
     },
     {
       title: '路径',
